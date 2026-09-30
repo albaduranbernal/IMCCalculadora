@@ -12,4 +12,14 @@ public class imc {
     public double calcular(double peso, double altura){
         return peso / (altura * altura);
     }
+    public String clasificar (double imc){
+      
+        if (imc < 18.5){
+            return "Bajo Peso";
+        }
+        if (imc < 25.0){ 
+            return "Peso Normal";
+        }
+    }
+    
 }
