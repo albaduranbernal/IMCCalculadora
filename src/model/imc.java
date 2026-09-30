@@ -9,5 +9,7 @@ package model;
  * @author DAM2
  */
 public class imc {
-    
+    public double calcular(double peso, double altura){
+        return peso / (altura * altura);
+    }
 }
