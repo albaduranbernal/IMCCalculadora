@@ -22,11 +22,11 @@ public class IMCModel {
         } else if (imc < 30.0) {
             return "Sobrepeso";
         } else if (imc < 35.0) {
-            return "Obesidad grado 1";
+            return "Obesidad G1";
         } else if (imc < 40.0) {
-            return "Obesidad grado 2";
+            return "Obesidad G2";
         } else {
-            return "Obesidad grado 3";
+            return "Obesidad G3";
         }
     }
 }
