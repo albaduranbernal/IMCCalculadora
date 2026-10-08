@@ -8,7 +8,7 @@ import javax.swing.JButton;
 
 /**
  *
- * @author DAM2
+ * @author Alba Duran 
  */
 public class IMCView extends javax.swing.JPanel {
 
@@ -19,7 +19,7 @@ public class IMCView extends javax.swing.JPanel {
         initComponents();
     }
 
-    //getters
+    // getters: la vista da los datos al controlador sin exponer los componentes
     public String getAltura() {
         return altura.getText();
     }
@@ -27,7 +27,7 @@ public class IMCView extends javax.swing.JPanel {
     public String getPeso() {
         return peso.getText();
     }
-
+    // Se devuelve el botón para que el controlador le añada su listener
     public JButton getBoton() {
         return button;
     }
@@ -43,9 +43,10 @@ public class IMCView extends javax.swing.JPanel {
     }
 
     public void mostrarResultado(float imc, String clasificacion) {
-        mensaje.setText(" ");
-        resultado.setText(String.format("IMC: %.2f - %s", imc, clasificacion));
+        mensaje.setText(" ");// limpia el error anterior (un espacio mantiene la altura de la etiqueta)
+        resultado.setText(String.format("IMC: %.2f - %s", imc, clasificacion)); // 2 decimales
 
+        // Color según el rango: verde = saludable, naranja = aviso, rojo = alerta
         if (imc < 18.5) {
             resultado.setForeground(java.awt.Color.RED);
         } else if (imc < 25) {
@@ -53,7 +54,7 @@ public class IMCView extends javax.swing.JPanel {
         } else if (imc < 30) {
             resultado.setForeground(new java.awt.Color(255, 140, 0));
         } else {
-            resultado.setForeground(java.awt.Color.RED);
+            resultado.setForeground(java.awt.Color.RED);// 30 o más: todas las obesidades en rojo
         }
     }
 
