@@ -10,8 +10,8 @@ import view.IMCView;
 import model.IMCModel;
 
 /**
- * Controlador MVC de la calculadora de IMC.
- * Conecta la vista con el modelo: recoge datos, valida, calcula y muestra.
+ * Controlador de la calculadora de IMC.
+ * Conecta la vista con el modelo: recoge datos, valida, calcula y muestra
  *
  * @author Alba Duran Bernal
  */
