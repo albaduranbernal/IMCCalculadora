@@ -10,6 +10,8 @@ import view.IMCView;
 import model.IMCModel;
 
 /**
+ * Controlador MVC de la calculadora de IMC.
+ * Conecta la vista con el modelo: recoge datos, valida, calcula y muestra.
  *
  * @author Alba Duran Bernal
  */
@@ -22,21 +24,25 @@ public class IMCController implements ActionListener {
         vista = new IMCView();
         modelo = new IMCModel();
 
+        // "this" porque la clase implementa ActionListener
         vista.getBoton().addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        empezar();
+        empezar();  // se ejecuta al pulsar el botón
     }
 
     public void empezar() {
+        // Primero lo vacío, para dar un mensaje más útil que el de "error"
         if (vista.getAltura().trim().isEmpty() || vista.getPeso().trim().isEmpty()) {
             vista.mensajeVacio();
         } else if (comprobarNumero(vista.getPeso(), vista.getAltura())) {
+            // Coma -> punto: en España se escribe 1,75 y parseFloat solo entiende 1.75
             float peso = Float.parseFloat(vista.getPeso().trim().replace(',', '.'));
             float altura = Float.parseFloat(vista.getAltura().trim().replace(',', '.'));
 
+            // El cálculo es del modelo; el controlador no calcula
             float imc = modelo.calcular(peso, altura);
             String clasificacion = modelo.clasificar(imc);
 
@@ -55,9 +61,9 @@ public class IMCController implements ActionListener {
         try {
             float p = Float.parseFloat(peso.trim().replace(',', '.'));
             float a = Float.parseFloat(altura.trim().replace(',', '.'));
-            correcto = p > 0 && a > 0;   // evita división entre 0 o valores negativos
+            correcto = p > 0 && a > 0; // evita división entre 0 y negativos
         } catch (NumberFormatException nfe) {
-            correcto = false;
+            correcto = false; // texto no numérico: no se cierra la app
         }
         return correcto;
     }
